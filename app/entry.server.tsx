@@ -1,5 +1,6 @@
 import type { EntryContext } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
+import Database from "Blog/Database";
 import { renderToString } from "react-dom/server";
 
 export default function handleRequest(
@@ -8,6 +9,9 @@ export default function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
+
+  Database.instance();
+
   let markup = renderToString(
     <RemixServer context={remixContext} url={request.url} />
   );
