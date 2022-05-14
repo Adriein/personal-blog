@@ -3,21 +3,16 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
 @Entity()
 export default class Post {
   @PrimaryColumn()
-  private _id: string
+  private _id: string | undefined
 
   @Column()
-  private _slug: string
+  private _slug: string | undefined
 
   @Column()
-  private _title: string
+  private _title: string | undefined
 
   @Column()
-  private _markdown: string
-
-  constructor(id: string, slug: string, title: string, markdown: string) {
-    this._id = id;
-  }
-
+  private _markdown: string | undefined
 
   set id(value: string) {
     this._id = value;
@@ -33,5 +28,16 @@ export default class Post {
 
   set markdown(value: string) {
     this._markdown = value;
+  }
+
+  public static build(id: string, slug: string, title: string, markdown: string): Post {
+    const post = new Post();
+
+    post._id = id;
+    post._slug = slug;
+    post._title = title;
+    post._markdown = markdown;
+
+    return post;
   }
 }

@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  postgres:
+    container_name: blog-postgre
+    image: 'postgres:latest'
+    ports:
+      - '5432:5432'
+    volumes:
+      - blog-volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: claret-blog
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+volumes:
+  blog-volume:
+    external: true
