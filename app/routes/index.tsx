@@ -1,3 +1,13 @@
+import { json } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
+import Database from "Blog/Database";
+
+export const loader: LoaderFunction = async () => {
+  const db = Database.instance();
+
+  return json({});
+};
+
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>

@@ -1,7 +1,9 @@
+import 'reflect-metadata';
 import type { EntryContext } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import Database from "Blog/Database";
-import { renderToString } from "react-dom/server";
+import { renderToString } from "react-dom/server"
+import { injectStylesIntoStaticMarkup } from '@mantine/ssr';
 
 export default function handleRequest(
   request: Request,
@@ -10,15 +12,13 @@ export default function handleRequest(
   remixContext: EntryContext
 ) {
 
-  Database.instance();
-
   let markup = renderToString(
     <RemixServer context={remixContext} url={request.url} />
   );
 
   responseHeaders.set("Content-Type", "text/html");
 
-  return new Response("<!DOCTYPE html>" + markup, {
+  return new Response(`<!DOCTYPE html>${injectStylesIntoStaticMarkup(markup)}`, {
     status: responseStatusCode,
     headers: responseHeaders,
   });

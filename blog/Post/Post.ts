@@ -1,17 +1,17 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
-@Entity()
-export default class Post {
-  @PrimaryColumn()
+@Entity({name: 'post'})
+export class Post {
+  @PrimaryColumn({name: 'id'})
   private _id: string | undefined
 
-  @Column()
+  @Column({name: 'slug'})
   private _slug: string | undefined
 
-  @Column()
+  @Column({name: 'title'})
   private _title: string | undefined
 
-  @Column()
+  @Column({name: 'markdown'})
   private _markdown: string | undefined
 
   set id(value: string) {

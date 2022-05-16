@@ -1,4 +1,5 @@
 import "reflect-metadata"
+import {Post} from "Blog/Post";
 import { DataSource } from "typeorm"
 
 export default class Database {
@@ -20,11 +21,17 @@ export default class Database {
       username: "postgres",
       password: "postgres",
       database: "claret-blog",
-      entities: [],
+      entities: [Post],
       synchronize: true,
       logging: false,
     });
-
-    TypeOrm.initialize().catch((error) => console.log(error));
+    console.log('initalize')
+    TypeOrm.initialize()
+      .then(() => {
+      console.log("Data Source has been initialized!")
+    })
+      .catch((err) => {
+        console.error("Error during Data Source initialization", err)
+      });
   }
 }
