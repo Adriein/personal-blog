@@ -2,16 +2,16 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity({name: 'post'})
 export class Post {
-  @PrimaryColumn({name: 'id'})
+  @PrimaryColumn({name: 'id', type: 'varchar'})
   private _id: string | undefined
 
-  @Column({name: 'slug'})
+  @Column({name: 'slug', type: 'varchar'})
   private _slug: string | undefined
 
-  @Column({name: 'title'})
+  @Column({name: 'title', type: 'varchar'})
   private _title: string | undefined
 
-  @Column({name: 'markdown'})
+  @Column({name: 'markdown', type: 'varchar'})
   private _markdown: string | undefined
 
   set id(value: string) {

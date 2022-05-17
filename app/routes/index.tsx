@@ -1,10 +1,19 @@
+import 'reflect-metadata';
 import { json } from "@remix-run/node";
 import type { LoaderFunction } from "@remix-run/node";
-import Database from "Blog/Database";
+import Database from "~/blog/Database";
+import { Job, JobService } from "~/blog/Job";
 
 export const loader: LoaderFunction = async () => {
-  const db = Database.instance();
+  const db = await Database.instance();
 
+  const jobRepository = db.getRepository<Job>(Job);
+
+  const service = new JobService(jobRepository);
+
+  const response = await service.findJobs();
+
+  console.log(response)
   return json({});
 };
 

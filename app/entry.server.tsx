@@ -1,7 +1,5 @@
-import 'reflect-metadata';
 import type { EntryContext } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
-import Database from "Blog/Database";
 import { renderToString } from "react-dom/server"
 import { injectStylesIntoStaticMarkup } from '@mantine/ssr';
 
