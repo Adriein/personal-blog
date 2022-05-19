@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity({name: 'job'})
-export class Job {
+export class JobModel {
   @PrimaryColumn({name: 'id', type: 'varchar'})
   private _id: string | undefined
 

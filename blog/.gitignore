@@ -1,8 +1,5 @@
+dist
 node_modules
 .env
 .eslintcache
 .idea
-/.cache
-/build
-/public/build
-prisma/dev.db
