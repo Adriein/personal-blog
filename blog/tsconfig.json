@@ -1,0 +1,27 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "incremental": true,
+    "skipLibCheck": true,
+    "paths": {
+      "Shared/*": ["./src/Shared/*"],
+      "Blog/*": ["./src/Blog/*", "./src/Blog"]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": ["../node_modules"]
+}
