@@ -1,4 +1,5 @@
-import { createConnection, DataSource } from 'typeorm';
+import { JobModel } from "Blog/Job/Infrastructure/Data/JobModel";
+import { DataSource } from 'typeorm';
 
 export default class Database {
   private static _instance: {provide: string, useFactory: () => Promise<DataSource>}[];
@@ -11,17 +12,17 @@ export default class Database {
     Database._instance = [
       {
         provide: 'DATABASE_CONNECTION',
-        useFactory: async () => await createConnection({
+        useFactory: async () => new DataSource({
           type: "postgres",
           host: "localhost",
           port: 5432,
           username: "postgres",
           password: "postgres",
           database: "claret-blog",
-          entities: [],
+          entities: [JobModel],
           synchronize: true,
           logging: false,
-        }),
+        }).initialize(),
       },
     ];
 
