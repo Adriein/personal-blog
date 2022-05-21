@@ -1,10 +1,9 @@
 import { Result } from "@badrap/result";
 import { Injectable } from "@nestjs/common";
+import { Auth } from "Authorization/Domain/Entity/Auth";
 import { Filter } from "Shared/Domain/Entity/Filter";
 import { IRepository } from "Shared/Domain/Repository/IRepository";
-import { UserModel } from "Shared/Infrastructure/Data/Model/UserModel";
 import { Repository } from "typeorm";
-import { Auth } from "../../../Domain/Entity/Auth";
 
 @Injectable()
 export class TypeOrmPgAuthRepository implements IRepository<Auth> {

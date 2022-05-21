@@ -17,7 +17,8 @@
     "skipLibCheck": true,
     "paths": {
       "Shared/*": ["./src/Shared/*"],
-      "Blog/*": ["./src/Blog/*", "./src/Blog"]
+      "Blog/*": ["./src/Blog/*", "./src/Blog"],
+      "Authorization/*": ["./src/Authorization/*", "./src/Authorization"]
     }
   },
   "include": [
