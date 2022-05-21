@@ -1,7 +1,6 @@
-dist
-node_modules
+blog/dist
+blog/node_modules
 .env
 .eslintcache
 .idea
-/dist/
-
+dist
