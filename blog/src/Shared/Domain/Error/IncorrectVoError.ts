@@ -1,9 +1,9 @@
 import { DomainError } from "Shared/Domain/Error/DomainError";
 
-export class RecordNotFoundError extends DomainError {
+export class IncorrectVoError extends DomainError {
   constructor(public message: string) {
     super(message);
 
-    Object.setPrototypeOf(this, RecordNotFoundError.prototype);
+    Object.setPrototypeOf(this, IncorrectVoError.prototype);
   }
 }

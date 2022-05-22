@@ -1,4 +1,4 @@
-import { MalformedVoError } from "Shared/Domain/Error/MalformedVoError";
+import { IncorrectVoError } from "../Error/IncorrectVoError";
 import { ValueObject } from "Shared/Domain/Vo/ValueObject";
 import { z } from "zod";
 
@@ -15,7 +15,7 @@ export class StringVo extends ValueObject {
 
       return true;
     }catch(error) {
-      throw new MalformedVoError('Malformed string VO');
+      throw new IncorrectVoError('Malformed string VO');
     }
   }
 

@@ -1,4 +1,6 @@
-export class NotAuthorizedError extends Error {
+import { DomainError } from "Shared/Domain/Error/DomainError";
+
+export class NotAuthorizedError extends DomainError {
   constructor() {
     super('User not authorized');
 

@@ -1,4 +1,4 @@
-import { MalformedVoError } from "Shared/Domain/Error/MalformedVoError";
+import { IncorrectVoError } from "../Error/IncorrectVoError";
 import { v4 as uuidV4, validate } from 'uuid';
 import { ValueObject } from './ValueObject';
 
@@ -7,7 +7,7 @@ export class ID extends ValueObject {
     super();
 
     if (this.validate(this._value)) {
-      throw new MalformedVoError('Incorrect ID format');
+      throw new IncorrectVoError('Incorrect ID format');
     }
   }
 

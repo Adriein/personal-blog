@@ -1,4 +1,4 @@
-import { MalformedVoError } from "Shared/Domain/Error/MalformedVoError";
+import { IncorrectVoError } from "../Error/IncorrectVoError";
 import { Time } from "Shared/Infrastructure/Time";
 import { ValueObject } from './ValueObject';
 
@@ -15,7 +15,7 @@ export class DateVo extends ValueObject {
   constructor(date: string | Date) {
     super();
     if (!date) {
-      throw new MalformedVoError('Incorrect Date format');
+      throw new IncorrectVoError('Incorrect Date format');
     }
 
     if (date instanceof Date) {
@@ -29,7 +29,7 @@ export class DateVo extends ValueObject {
     const parsedDate = Time.format(new Date(formattedDate), Time.AMERICAN_DATE_FORMAT);
 
     if (this.validate(parsedDate)) {
-      throw new MalformedVoError('Incorrect Date format');
+      throw new IncorrectVoError('Incorrect Date format');
     }
     this._date = new Date(formattedDate);
   }

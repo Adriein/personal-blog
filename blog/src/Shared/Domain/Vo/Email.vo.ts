@@ -1,4 +1,4 @@
-import { MalformedVoError } from "Shared/Domain/Error/MalformedVoError";
+import { IncorrectVoError } from "../Error/IncorrectVoError";
 import { ValueObject } from './ValueObject';
 
 export class Email extends ValueObject {
@@ -8,7 +8,7 @@ export class Email extends ValueObject {
   constructor(email: string) {
     super();
     if (this.validate(email)) {
-      throw new MalformedVoError('Incorrect Email format');
+      throw new IncorrectVoError('Incorrect Email format');
     }
     this.email = email;
   }
