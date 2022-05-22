@@ -9,7 +9,7 @@ import { Email } from "Shared/Domain/Vo/Email.vo";
 import { Password } from "Shared/Domain/Vo/Password.vo";
 
 @QueryHandler(SignInQuery)
-export class SingInQueryHandler implements IQueryHandler {
+export class SignInQueryHandler implements IQueryHandler {
   constructor(@Inject('IAuthRepository') private readonly repository: IAuthRepository) {}
 
   public async execute(query: SignInQuery): Promise<SignInResponse> {

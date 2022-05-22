@@ -1,4 +1,5 @@
 import { JobModel } from "Blog/Job/Infrastructure/Data/JobModel";
+import { UserModel } from "Shared/Infrastructure/Data/Model/UserModel";
 import { DataSource } from 'typeorm';
 
 export default class Database {
@@ -19,7 +20,7 @@ export default class Database {
           username: "postgres",
           password: "postgres",
           database: "claret-blog",
-          entities: [JobModel],
+          entities: [JobModel, UserModel],
           synchronize: true,
           logging: false,
         }).initialize(),

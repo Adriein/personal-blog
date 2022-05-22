@@ -24,13 +24,13 @@ export class TypeOrmPgAuthRepository implements IAuthRepository {
   public async findOne(filter: AuthFilter): Promise<Result<Auth, Error | RecordNotFoundError>> {
     try {
       const adapter = new TypeOrmAuthFilterAdapter();
-      const userModel = await this.repository.findOne(adapter.apply(filter));
+      const result = await this.repository.findOne(adapter.apply(filter));
 
-      if(!userModel) {
+      if(!result) {
         return Result.err(new RecordNotFoundError('No user model found'))
       }
 
-      return Result.ok(this.mapper.toDomain(userModel));
+      return Result.ok(this.mapper.toDomain(result));
     }catch(error) {
       return Result.err(error as Error);
     }

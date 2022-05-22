@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CqrsModule } from "@nestjs/cqrs";
+import { SignInQueryHandler } from "Authorization/Application/SignIn/SignInQueryHandler";
+import { SignInController } from "Authorization/infrastructure/Controller/SignIn/SignInController";
 import { AuthMapper } from "Authorization/infrastructure/Data/Mapper/AuthMapper";
 import { TypeOrmPgAuthRepository } from "Authorization/infrastructure/Data/Repository/TypeOrmPgAuthRepository";
 import { UserModel } from "Shared/Infrastructure/Data/Model/UserModel";
@@ -15,18 +17,18 @@ const providers = [
   },
   {
     provide: 'IAuthRepository',
-    useValue: TypeOrmPgAuthRepository,
+    useClass: TypeOrmPgAuthRepository,
   },
   {
     provide: AuthMapper,
-    useValue: AuthMapper,
+    useClass: AuthMapper,
   },
 ];
 
 @Module({
   imports: [CqrsModule],
-  controllers: [],
-  providers: [...providers],
+  controllers: [SignInController],
+  providers: [SignInQueryHandler, ...providers],
   exports: [...Database.instance()],
 })
 export class App {}
