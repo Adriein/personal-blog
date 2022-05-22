@@ -1,6 +1,5 @@
-import { CryptoService } from '../Services/CryptoService';
 import { ValueObject } from './ValueObject';
-import { ArrayUtils } from "../Helper/Array.utils";
+import { ArrayUtil } from "../Util/ArrayUtil";
 
 export class Password extends ValueObject {
   private readonly password: string;
@@ -28,7 +27,7 @@ export class Password extends ValueObject {
 
     const passwordSlug: string[] = [];
 
-    ArrayUtils.times<void>(5, () => {
+    ArrayUtil.times<void>(5, () => {
       const randomNumber = Math.floor(Math.random() * chars.length);
 
       passwordSlug.push(chars.split('')[randomNumber]);

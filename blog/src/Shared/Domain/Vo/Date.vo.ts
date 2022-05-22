@@ -1,4 +1,5 @@
 import { MalformedVoError } from "Shared/Domain/Error/MalformedVoError";
+import { Time } from "Shared/Infrastructure/Time";
 import { ValueObject } from './ValueObject';
 
 export class DateVo extends ValueObject {
