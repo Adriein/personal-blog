@@ -1,9 +1,10 @@
 import { Result } from "@badrap/result";
 import { Inject, Injectable } from "@nestjs/common";
 import { Auth } from "Authorization/Domain/Entity/Auth";
+import { AuthFilter } from "Authorization/Domain/Filter/AuthFilter";
 import { IAuthRepository } from "Authorization/Domain/Repository/IAuthRepository";
+import { TypeOrmAuthFilterAdapter } from "Authorization/infrastructure/Data/Filter/TypeOrmAuthFilterAdapter";
 import { AuthMapper } from "Authorization/infrastructure/Data/Mapper/AuthMapper";
-import { Filter } from "Shared/Domain/Entity/Filter";
 import { RecordNotFoundError } from "Shared/Domain/Error/RecordNotFoundError";
 import { UserModel } from "Shared/Infrastructure/Data/Model/UserModel";
 import { Repository } from "typeorm";
@@ -16,13 +17,14 @@ export class TypeOrmPgAuthRepository implements IAuthRepository {
     return Promise.resolve(undefined);
   }
 
-  public async find(filter: Filter): Promise<Result<Auth[], Error>> {
+  public async find(filter: AuthFilter): Promise<Result<Auth[], Error>> {
     throw new Error();
   }
 
-  public async findOne(filter: Filter): Promise<Result<Auth, Error | RecordNotFoundError>> {
+  public async findOne(filter: AuthFilter): Promise<Result<Auth, Error | RecordNotFoundError>> {
     try {
-      const userModel = await this.repository.findOne({});
+      const adapter = new TypeOrmAuthFilterAdapter();
+      const userModel = await this.repository.findOne(adapter.apply(filter));
 
       if(!userModel) {
         return Result.err(new RecordNotFoundError('No user model found'))

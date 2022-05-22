@@ -16,5 +16,5 @@ export abstract class Filter {
     return order;
   }
 
-  public abstract apply(): Map<string, any>;
+  public abstract build(): Map<string, any>;
 }

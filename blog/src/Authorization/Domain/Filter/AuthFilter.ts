@@ -15,7 +15,7 @@ export class AuthFilter extends Filter {
     return this;
   };
 
-  public apply(): Map<string, any> {
+  public build(): Map<string, any> {
     return this.data;
   }
 }
