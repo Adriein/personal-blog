@@ -1,3 +1,4 @@
+import { Inject } from "@nestjs/common";
 import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
 import { SignInQuery } from "Authorization/Application/SignIn/SignInQuery";
 import { SignInResponse } from "Authorization/Application/SignIn/SignInResponse";
@@ -9,7 +10,7 @@ import { Password } from "Shared/Domain/Vo/Password.vo";
 
 @QueryHandler(SignInQuery)
 export class SingInQueryHandler implements IQueryHandler {
-  constructor(private readonly repository: IAuthRepository) {}
+  constructor(@Inject('IAuthRepository') private readonly repository: IAuthRepository) {}
 
   public async execute(query: SignInQuery): Promise<SignInResponse> {
     const email = new Email(query.email);

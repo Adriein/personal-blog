@@ -1,5 +1,5 @@
 import { Result } from "@badrap/result";
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { Auth } from "Authorization/Domain/Entity/Auth";
 import { IAuthRepository } from "Authorization/Domain/Repository/IAuthRepository";
 import { AuthMapper } from "Authorization/infrastructure/Data/Mapper/AuthMapper";
@@ -10,7 +10,7 @@ import { Repository } from "typeorm";
 
 @Injectable()
 export class TypeOrmPgAuthRepository implements IAuthRepository {
-  constructor(private readonly repository: Repository<UserModel>, private readonly mapper: AuthMapper) {}
+  constructor(@Inject('UserModelRepository') private readonly repository: Repository<UserModel>, private readonly mapper: AuthMapper) {}
 
   delete(entity: Auth): Promise<void> {
     return Promise.resolve(undefined);
