@@ -24,6 +24,11 @@ const Mappers = [AuthMapper];
 
 const Handlers = [SignInQueryHandler];
 
+const DatabaseProvider = [{
+  provide: 'DATABASE_CONNECTION',
+  useFactory: async () => Database.instance().initialize(),
+}]
+
 @Module({
   imports: [CqrsModule],
   controllers: [SignInController],
@@ -31,8 +36,8 @@ const Handlers = [SignInQueryHandler];
     ...Repositories,
     ...Mappers,
     ...Handlers,
-    ...Database.instance()
+    ...DatabaseProvider
   ],
-  exports: [...Database.instance()]
+  exports: [...DatabaseProvider]
 })
 export class AuthorizationBoundedContext {}

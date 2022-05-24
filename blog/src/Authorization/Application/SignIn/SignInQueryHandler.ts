@@ -28,6 +28,6 @@ export class SignInQueryHandler implements IQueryHandler {
       throw new NotAuthorizedError();
     }
 
-    return new SignInResponse();
+    return SignInResponse.fromDomain(auth);
   }
 }
