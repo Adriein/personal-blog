@@ -21,6 +21,9 @@
       "Authorization/*": ["./src/Authorization/*", "./src/Authorization"]
     }
   },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
   "include": [
     "src"
   ],

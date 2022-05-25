@@ -16,6 +16,9 @@ export class AuthMapper implements IMapper<UserModel, Auth> {
   }
 
   public toModel(domain: Auth): UserModel {
-    return new UserModel();
+    const user = new UserModel()
+    user.id = ''
+
+    return user;
   }
 }

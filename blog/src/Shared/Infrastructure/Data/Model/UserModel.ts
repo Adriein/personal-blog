@@ -2,7 +2,7 @@ import { BaseModel } from "Shared/Infrastructure/Data/Model/BaseModel";
 import { Column, Entity } from "typeorm";
 
 @Entity({name: 'user'})
-export class UserModel extends BaseModel{
+export class UserModel extends BaseModel {
   @Column({name: 'name', type: 'varchar'})
   public name!: string;
 
