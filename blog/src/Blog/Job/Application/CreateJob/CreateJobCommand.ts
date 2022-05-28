@@ -1,6 +1,11 @@
 import { ICommand } from "@nestjs/cqrs";
+import { CreateJobRequest } from "Blog/Job/Infrastructure/Controller/CreateJob/CreateJobRequest";
 
 export class CreateJobCommand implements ICommand {
+  public static fromRequest(body: CreateJobRequest): CreateJobCommand {
+    return new CreateJobCommand(body.company, body.description, body.timeInit, body.timeEnd);
+  }
+
   constructor(private _company: string, private _description: string, private _timeInit: string, private _timeEnd: string ) {}
 
 

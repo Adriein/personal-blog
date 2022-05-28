@@ -1,20 +1,18 @@
 import 'reflect-metadata';
+import { BaseModel } from "Shared/Infrastructure/Data/Model/BaseModel";
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity({name: 'job'})
-export class JobModel {
-  @PrimaryColumn({name: 'id', type: 'varchar'})
-  private _id: string | undefined
-
+export class JobModel extends BaseModel {
   @Column({name: 'company', type: 'varchar'})
-  private _company: string | undefined
+  public company!: string
 
   @Column({name: 'description', type: 'varchar'})
-  private _description: string | undefined
+  public description!: string
 
   @Column({name: 'time_init', type: 'varchar'})
-  private _timeInit: string | undefined
+  public timeInit!: string
 
   @Column({name: 'time_end', type: 'varchar'})
-  private _timeEnd: string | undefined
+  public timeEnd!: string
 }

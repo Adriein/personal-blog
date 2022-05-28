@@ -1,4 +1,4 @@
-import { JobModel } from "Blog/Job/Infrastructure/Data/JobModel";
+import { JobModel } from "Blog/Job/Infrastructure/Data/Model/JobModel";
 import { UserModel } from "Shared/Infrastructure/Data/Model/UserModel";
 import { DataSource } from 'typeorm';
 
