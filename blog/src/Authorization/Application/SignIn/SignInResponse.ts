@@ -1,15 +1,12 @@
 import { Auth } from "Authorization/Domain/Entity/Auth";
-import { Expose } from 'class-transformer';
 
 export class SignInResponse {
   public static fromDomain(auth: Auth): SignInResponse {
-    return new SignInResponse(auth.name());
+    return new SignInResponse(auth.name(), auth.email().value);
   }
 
-  constructor(private _name: string) {}
-
-  @Expose()
-  public get name(): string {
-    return this._name;
-  }
+  constructor(
+    public name: string,
+    public email: string,
+  ) {}
 }

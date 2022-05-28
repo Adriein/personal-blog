@@ -10,7 +10,7 @@ import { UserModel } from "../src/Shared/Infrastructure/Data/Model/UserModel";
   const crypto = new CryptoService();
   const app = await NestFactory.create(App);
   const configService = app.get(ConfigService);
-  console.log(configService.get<string>('DATABASE_HOST'))
+
   const db = await new DataSource({
     type: "postgres",
     host: configService.get<string>('DATABASE_HOST'),
