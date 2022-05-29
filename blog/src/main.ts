@@ -1,3 +1,4 @@
+import { VersioningType } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { NestFactory } from '@nestjs/core';
 import { ErrorsInterceptor } from "Shared/Infrastructure/Interceptor/ErrorInterceptor";
@@ -17,6 +18,13 @@ async function bootstrap() {
   }));
 
   app.useGlobalInterceptors(new ErrorsInterceptor());
+
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
+
+  app.setGlobalPrefix('v1');
+
   await app.listen(3000);
 }
 
