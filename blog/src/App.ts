@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_INTERCEPTOR } from "@nestjs/core";
 import { CqrsModule } from "@nestjs/cqrs";
-import { AuthorizationBoundedContext } from "Authorization/infrastructure/AuthorizationBoundedContext";
+import { AuthorizationBoundedContext } from "Authorization/AuthorizationBoundedContext";
 import { BlogBoundedContext } from "Blog/BlogBoundedContext";
 import { UserInterceptor } from "Shared/Infrastructure/Interceptor/UserInterceptor";
 
@@ -20,6 +20,6 @@ import { UserInterceptor } from "Shared/Infrastructure/Interceptor/UserIntercept
       useClass: UserInterceptor
     }
   ],
-  exports: [],
+  exports: [CqrsModule],
 })
 export class App {}
